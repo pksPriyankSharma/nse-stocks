@@ -47,8 +47,19 @@ async function fetchNifty50Data() {
     });
 
     // Write to CSV file
-    fs.writeFileSync("nifty50.csv", csvContent);
-    console.log("Data has been written to nifty50.csv");
+    var now = new Date();
+    var csvfile_name =
+      "nifty50" +
+      "-" +
+      now.getDate() +
+      "-" +
+      (now.getMonth() + 1) +
+      "-" +
+      now.getFullYear() +
+      ".csv";
+
+    fs.writeFileSync(csvfile_name, csvContent);
+    console.log("Data has been written to" + " " + csvfile_name);
   } catch (error) {
     console.error("Error fetching data:", error);
   }
